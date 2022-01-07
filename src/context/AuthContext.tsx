@@ -34,9 +34,27 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return
   }
 
-  function logout() {
-    // add logout logic
-    return
+  async function logout() {
+
+    try {
+      const res = await fetch(endpoints.LOGOUT, {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+
+      if (res.ok) {
+        const resData = await res.json()
+
+        setCurrentUser(null)
+
+        console.log(resData)
+      }
+    }
+    catch (err) {
+      console.log(err)
+    }
   }
 
   useEffect(() => {
