@@ -1,6 +1,12 @@
 import { useState } from "react"
+import { AuthContextType, useAuth } from "../context/AuthContext"
 
 function Login() {
+
+  const { login, currentUser } = useAuth() as AuthContextType
+
+
+  console.log(currentUser)
 
   const [error, setError] = useState<string | null>(null)
 
@@ -20,7 +26,7 @@ function Login() {
         <button
           className="font-bold text-amber-300 border border-amber-300 p-3 rounded-lg w-full mt-4 hover:bg-amber-300 hover:text-white transition-colors duration-200 "
           type="button"
-          // onClick={loginHandler}
+          onClick={() => login()}
         >
           Login with Google
         </button>
