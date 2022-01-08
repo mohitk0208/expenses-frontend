@@ -1,4 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import CategoriesContainer from "./components/CategoriesContainer"
+import ExpensesContainer from "./components/ExpensesContainer"
 import { AuthProvider, useAuth } from "./context/AuthContext"
 import HomeWrapper from "./pages/HomeWrapper"
 import Login from "./pages/Login"
@@ -12,7 +14,15 @@ export default function App() {
           <Route path={routes.HOME} element={
             <RequireAuth redirectTo={routes.LOGIN} >
               <HomeWrapper>
-                hello world
+                <CategoriesContainer />
+              </HomeWrapper>
+            </RequireAuth>
+          } />
+
+          <Route path={routes.EXPENSES()} element={
+            <RequireAuth redirectTo={routes.HOME} >
+              <HomeWrapper>
+                <ExpensesContainer />
               </HomeWrapper>
             </RequireAuth>
           } />

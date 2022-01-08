@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Category from "./Category"
 import { useAuth } from "../../context/AuthContext"
-import { I_GET_CATEGORIES } from "../../utils/apiQueriesResponseTypes"
+import { I_GET_CATEGORIES } from "../../types/apiQueriesResponse.types"
 import { endpoints } from "../../utils/endpoints"
 import { GET_CATEGORIES } from "../../utils/apiQueries"
 

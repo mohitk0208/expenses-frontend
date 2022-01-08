@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { I_GET_CATEGORIES } from "../../utils/apiQueriesResponseTypes"
+import { I_GET_CATEGORIES } from "../../types/apiQueriesResponse.types"
 import { routes } from "../../utils/routeStrings"
 
 interface CategoryProp {
