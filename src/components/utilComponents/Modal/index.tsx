@@ -1,15 +1,16 @@
 import { Dialog, Transition } from '@headlessui/react'
 import React, { Fragment, MouseEventHandler } from 'react'
+import Button from '../Button'
 
 interface ModalProps {
   show: boolean,
   onCancel: MouseEventHandler<HTMLButtonElement>,
   children: React.ReactNode,
   headline: string,
-  btn: string | React.ReactNode,
+  btn?: string | React.ReactNode,
   onSubmit: MouseEventHandler<HTMLButtonElement>,
-  cancelBtn: string | React.ReactNode,
-  className: string
+  cancelBtn?: string | React.ReactNode,
+  className?: string
 }
 
 function Modal({ show, onCancel, children, headline, btn, onSubmit, cancelBtn, className }: ModalProps) {
@@ -65,13 +66,13 @@ function Modal({ show, onCancel, children, headline, btn, onSubmit, cancelBtn, c
 
                   {cancelBtn && (
                     typeof (cancelBtn) === "string" ? (
-                      <button className="my-1 " type="button" onClick={onCancel} >{cancelBtn}</button>
+                      <Button className="my-1 " variant="outline-danger" type="button" onClick={onCancel} >{cancelBtn}</Button>
                     ) : cancelBtn
                   )}
 
                   {btn && (
                     typeof (btn) === "string" ? (
-                      <button className="my-1" type="button" onClick={onSubmit}  >{btn}</button>
+                      <Button className="my-1" variant="primary" type="button" onClick={onSubmit}  >{btn}</Button>
                     ) : btn
 
                   )}

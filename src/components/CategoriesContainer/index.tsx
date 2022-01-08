@@ -4,10 +4,13 @@ import { useAuth } from "../../context/AuthContext"
 import { I_GET_CATEGORIES } from "../../types/apiQueriesResponse.types"
 import { endpoints } from "../../utils/endpoints"
 import { GET_CATEGORIES } from "../../utils/apiQueries"
+import FAB from "../utilComponents/FAB"
+import AddCategoryModal from "./AddCategoryModal"
 
 const CategoriesContainer = () => {
   const [categories, setCategories] = useState<I_GET_CATEGORIES[]>([])
   const [loading, setLoading] = useState(true)
+  const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false)
 
   const { currentUser } = useAuth()
 
@@ -50,7 +53,7 @@ const CategoriesContainer = () => {
   console.log(categories)
 
   return (
-    <div className="px-[5%] divide-y " >
+    <div className="px-[5%] divide-y" >
       <div className="pb-2" >
         <h1 className="font-bold text-xl text-center" >Categories</h1>
       </div>
@@ -67,6 +70,10 @@ const CategoriesContainer = () => {
           })
         )}
       </div>
+      <FAB onClick={() => setIsAddCategoryModalOpen(true)} >
+        +
+      </FAB>
+      <AddCategoryModal show={isAddCategoryModalOpen} onClose={() => setIsAddCategoryModalOpen(false)} />
     </div>
 
 
