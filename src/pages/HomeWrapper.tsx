@@ -1,3 +1,4 @@
+import CategoriesContainer from "../components/CategoriesContainer"
 import Dashboard from "../components/Dashboard"
 import { useAuth } from "../context/AuthContext"
 
@@ -13,6 +14,7 @@ function HomeWrapper({ children }: HomeWrapperProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <Dashboard />
+      <CategoriesContainer />
       {children}
     </div>
   )
