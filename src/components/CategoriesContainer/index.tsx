@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import Category from "./Category"
 import { useAuth } from "../../context/AuthContext"
 import { I_GET_CATEGORIES } from "../../types/apiQueriesResponse.types"
-import { endpoints } from "../../utils/endpoints"
 import { GET_CATEGORIES } from "../../utils/apiQueries"
 import FAB from "../utilComponents/FAB"
 import AddCategoryModal from "./AddCategoryModal"
+import { sendQuery } from "../../utils/sendQuery"
 
 const CategoriesContainer = () => {
   const [categories, setCategories] = useState<I_GET_CATEGORIES[]>([])
@@ -18,22 +18,10 @@ const CategoriesContainer = () => {
     async function fetchCategories() {
       try {
         setLoading(true)
-        const res = await fetch(endpoints.GRAPHQL, {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            query: GET_CATEGORIES
-          })
-        })
-        const resData = await res.json()
+        const data = await sendQuery(GET_CATEGORIES())
 
-        if (resData.data) {
-
-          setCategories(resData?.data?.categories)
+        if (data) {
+          setCategories(data?.categories)
         }
 
       }

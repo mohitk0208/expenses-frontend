@@ -50,9 +50,9 @@ function Modal({ show, onCancel, children, headline, btn, onSubmit, cancelBtn, c
             leaveFrom="opacity-100 translate-y-0 scale-100"
             leaveTo="opacity-0 -translate-y-8 sm-translate-y-0 sm:scale-95"
           >
-            <div className="inline-block w-full max-w-md p-4 my-8 overflow-hidden text-left align-middle transition-all transform bg-white dark:bg-gray-800 dark:text-white shadow-xl rounded-lg">
+            <div className="inline-block w-full max-w-md px-6 py-4 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
               <div>
-                <Dialog.Title as="h3" className="text-lg leading-3 font-medium py-2 text-gray-900 dark:text-white">
+                <Dialog.Title as="h3" className="text-lg leading-3 font-medium py-2 text-gray-900 ">
                   {headline}
                 </Dialog.Title>
 
