@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import { I_GET_EXPENSES } from "../../types/apiQueriesResponse.types"
 import { GET_EXPENSES_BY_CATEGORY } from "../../utils/apiQueries"
-import { endpoints } from "../../utils/endpoints"
+import { sendQuery } from "../../utils/sendQuery"
 import Expense from "./Expense"
 
 const ExpensesContainer = () => {
@@ -18,22 +18,11 @@ const ExpensesContainer = () => {
 
       try {
         setLoading(true)
-        const res = await fetch(endpoints.GRAPHQL, {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            query: GET_EXPENSES_BY_CATEGORY(categoryId || "")
-          })
-        })
-        const resData = await res.json()
+        const data = await sendQuery(GET_EXPENSES_BY_CATEGORY(categoryId!))
 
-        if(resData.data) {
-          console.log(resData)
-          setExpenses(resData?.data?.category?.expenses)
+        if(data) {
+          console.log(data)
+          setExpenses(data?.category?.expenses)
         }
 
       }
@@ -46,7 +35,9 @@ const ExpensesContainer = () => {
 
     }
 
-    fetchExpenses()
+    if (categoryId) {
+      fetchExpenses()
+    }
 
   }, [currentUser, categoryId])
 

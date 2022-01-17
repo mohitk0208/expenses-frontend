@@ -15,18 +15,23 @@ export const GET_CATEGORIES = () => {
 
 
 
-export const GET_EXPENSES_BY_CATEGORY = (categoryId: string) => `
-{
-  category(id: "${categoryId}") {
-    expenses {
-      id,
-      date,
-      amount,
-      spentOn
+export const GET_EXPENSES_BY_CATEGORY = (categoryId: string) => ({
+  query: `
+  query getExpensesByCategory($categoryId: String!) {
+    category(id: $categoryId) {
+      expenses {
+        id,
+        amount,
+        dateSpentOn,
+        spentFor
+      }
     }
   }
-}
-`
+  `,
+  variables: {
+    categoryId
+  }
+})
 
 export const ADD_CATEGORY = (
   categoryName: string,

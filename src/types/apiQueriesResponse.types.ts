@@ -7,8 +7,8 @@ export interface I_GET_CATEGORIES {
 export interface I_GET_EXPENSES {
   id: string,
   amount: Number,
-  spentOn: string,
-  date: string,
+  spentFor: string,
+  dateSpentOn: string,
   // category: string,
   // month: string,
   // user: string
