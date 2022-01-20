@@ -54,3 +54,31 @@ export const ADD_CATEGORY = (
     description: description
   }
 })
+
+export const ADD_EXPENSE = (
+  amount: Number,
+  dateSpentOn: Date,
+  spentFor: string,
+  type: "forMonth" | "regular",
+  categoryId: string
+) => ({
+  query: `
+  mutation addNewExpense($amount: Float!, $dateSpentOn: String!, $spentFor: String!, $type: String!, $categoryId: String!) {
+    addExpense(amount: $amount, dateSpentOn: $dateSpentOn, spentFor: $spentFor, type: $type, categoryId: $categoryId) {
+      id
+      amount
+      dateSpentOn
+      spentFor
+      type
+      categoryId
+    }
+  }
+  `,
+  variables: {
+    amount,
+    dateSpentOn: dateSpentOn.toISOString(),
+    spentFor,
+    type,
+    categoryId
+  }
+})

@@ -4,11 +4,14 @@ import { useAuth } from "../../context/AuthContext"
 import { I_GET_EXPENSES } from "../../types/apiQueriesResponse.types"
 import { GET_EXPENSES_BY_CATEGORY } from "../../utils/apiQueries"
 import { sendQuery } from "../../utils/sendQuery"
+import FAB from "../utilComponents/FAB"
+import AddExpenseModal from "./AddExpenseModal"
 import Expense from "./Expense"
 
 const ExpensesContainer = () => {
   const [expenses, setExpenses] = useState<I_GET_EXPENSES[]>([])
   const [loading, setLoading] = useState(false)
+  const [isAddExpenseModalOpen, setIsAddExpenseModalOpen] = useState(false)
 
   const { currentUser } = useAuth()
   const { categoryId } = useParams()
@@ -20,7 +23,7 @@ const ExpensesContainer = () => {
         setLoading(true)
         const data = await sendQuery(GET_EXPENSES_BY_CATEGORY(categoryId!))
 
-        if(data) {
+        if (data) {
           console.log(data)
           setExpenses(data?.category?.expenses)
         }
@@ -60,6 +63,13 @@ const ExpensesContainer = () => {
         )}
 
       </div>
+      <FAB onClick={() => setIsAddExpenseModalOpen(true)} >
+        +
+      </FAB>
+      <AddExpenseModal
+        show={isAddExpenseModalOpen}
+        onClose={() => setIsAddExpenseModalOpen(false)}
+      />
     </div>
   )
 
