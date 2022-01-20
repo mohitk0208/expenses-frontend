@@ -1,4 +1,5 @@
 import React from "react"
+import LoadingSpinner from "../LoadingSpinner"
 
 function joinClassNames(...classes: string[]): string {
   return classes.reduce((prev, curr) => {
@@ -51,6 +52,9 @@ interface ButtonProps {
 function Button({ variant = "primary", className, children, loading = false, ...props }: ButtonProps & React.HTMLProps<HTMLButtonElement>) {
   return (
     <button className={`py-1 px-2 border rounded-md cursor-pointer outline-none disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]}, ${className}`} {...props} >
+
+      {loading && <LoadingSpinner className="w-5 mr-1" />}
+
       {children}
     </button>
   )

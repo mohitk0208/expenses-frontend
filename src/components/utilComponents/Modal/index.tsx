@@ -10,10 +10,11 @@ interface ModalProps {
   btn?: string | React.ReactNode,
   onSubmit: MouseEventHandler<HTMLButtonElement>,
   cancelBtn?: string | React.ReactNode,
-  className?: string
+  className?: string,
+  btnLoading?: boolean
 }
 
-function Modal({ show, onCancel, children, headline, btn, onSubmit, cancelBtn, className }: ModalProps) {
+function Modal({ show, onCancel, children, headline, btn, btnLoading = false, onSubmit, cancelBtn, className }: ModalProps) {
 
   return (
     <Transition show={show} as={Fragment} >
@@ -72,7 +73,7 @@ function Modal({ show, onCancel, children, headline, btn, onSubmit, cancelBtn, c
 
                   {btn && (
                     typeof (btn) === "string" ? (
-                      <Button className="my-1" variant="primary" type="button" onClick={onSubmit}  >{btn}</Button>
+                      <Button className="my-1" variant="primary" type="button" onClick={onSubmit} loading={btnLoading}  >{btn}</Button>
                     ) : btn
 
                   )}

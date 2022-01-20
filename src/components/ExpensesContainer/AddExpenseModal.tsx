@@ -48,6 +48,7 @@ function AddExpenseModal({ show, onClose }: AddExpenseModalProps) {
       className=""
       btn="Add"
       cancelBtn="Cancel"
+      btnLoading={loading}
     >
 
       <label className="flex flex-col gap-1 my-1">
