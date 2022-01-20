@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import CategoriesContainer from "./components/CategoriesContainer"
 import ExpensesContainer from "./components/ExpensesContainer"
 import { AuthProvider, useAuth } from "./context/AuthContext"
+import Calender from "./pages/Calender"
 import HomeWrapper from "./pages/HomeWrapper"
 import Login from "./pages/Login"
 import { routes } from "./utils/routeStrings"
@@ -20,12 +21,19 @@ export default function App() {
           } />
 
           <Route path={routes.EXPENSES()} element={
-            <RequireAuth redirectTo={routes.HOME} >
+            <RequireAuth redirectTo={routes.LOGIN} >
               <HomeWrapper>
                 <ExpensesContainer />
               </HomeWrapper>
             </RequireAuth>
           } />
+
+          <Route path={routes.CALENDER} element={
+            <RequireAuth redirectTo={routes.LOGIN} >
+              <Calender />
+            </RequireAuth>
+          } />
+
           <Route path={routes.LOGIN} element={
             <NoAuth redirectTo={routes.HOME} >
               <Login />

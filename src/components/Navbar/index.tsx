@@ -8,10 +8,16 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between bg-gray-200 py-1 px-5 shadow-sm">
-      <div>
+      <div className="flex items-center justify-center gap-2" >
         <Link to={routes.HOME} >
-          <h1 className="font-bold" >
+          <h1 className="font-bold text-xl" >
             Expense Tracker
+          </h1>
+        </Link>
+
+        <Link to={routes.CALENDER} >
+          <h1 className="hover:text-blue-500 transition-colors duration-200 ease-in-out" >
+            Calender
           </h1>
         </Link>
       </div>
@@ -28,6 +34,6 @@ const Navbar = () => {
       </div>
     </nav>
   )
-}                 
+}
 
 export default Navbar
