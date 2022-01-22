@@ -28,7 +28,7 @@ export default function App() {
             </RequireAuth>
           } />
 
-          <Route path={routes.CALENDER} element={
+          <Route path={routes.CALENDER()} element={
             <RequireAuth redirectTo={routes.LOGIN} >
               <Calender />
             </RequireAuth>
