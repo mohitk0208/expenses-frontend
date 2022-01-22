@@ -15,7 +15,7 @@ const Navbar = () => {
           </h1>
         </Link>
 
-        <Link to={routes.CALENDER} >
+        <Link to={routes.CALENDER(new Date().getFullYear(), new Date().getMonth())} >
           <h1 className="hover:text-blue-500 transition-colors duration-200 ease-in-out" >
             Calender
           </h1>
