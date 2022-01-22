@@ -33,6 +33,8 @@ export const GET_EXPENSES_BY_CATEGORY = (categoryId: string) => ({
   }
 })
 
+
+
 export const ADD_CATEGORY = (
   categoryName: string,
   backgroundUrl?: string,
@@ -54,6 +56,8 @@ export const ADD_CATEGORY = (
     description: description
   }
 })
+
+
 
 export const ADD_EXPENSE = (
   amount: Number,
@@ -80,5 +84,39 @@ export const ADD_EXPENSE = (
     spentFor,
     type,
     categoryId
+  }
+})
+
+
+export const GET_MONTH_DATA = (
+  year: number,
+  monthNum: number,
+) => ({
+  query: `
+  query getMonthData($year: Int!, $monthNum: Int!) {
+    monthByMonthNumAndYear(year: $year, monthNum: $monthNum) {
+      id
+      year
+      monthNum
+      budgetPlan {
+        id
+        perDayAmount
+        perMonthAmount
+
+      }
+      expenses {
+        id
+        amount
+        dateSpentOn
+        spentFor
+        type
+        categoryId
+      }
+    }
+  }
+  `,
+  variables: {
+    year,
+    monthNum
   }
 })
