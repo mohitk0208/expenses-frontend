@@ -9,7 +9,6 @@ const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 // return a list of dates of a month
 function getDates(year: number, month: number) {
-  const date = new Date(year, month);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const dates = [];
   for (let i = 1; i <= daysInMonth; i++) {
